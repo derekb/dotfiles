@@ -13,6 +13,7 @@ git pull origin master;
 
 function copyDotfiles() {
 	rsync --exclude ".git/" \
+        --exclude ".macos" \
 		--exclude ".DS_Store" \
 		--exclude "bootstrap.sh" \
 		--exclude "README.md" \
