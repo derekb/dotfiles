@@ -12,3 +12,6 @@ alias -- -="cd -"
 alias pj="cd ~/projects"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
+
+# Reload the shell (i.e. invoke as a login shell)
+alias reload="exec $SHELL -l"
