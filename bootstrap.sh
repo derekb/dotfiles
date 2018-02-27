@@ -5,6 +5,7 @@ mkdir ~/projects
 
 # Create .extra file
 touch ~/.extra
+touch ~/.gituser
 
 cd "$(dirname "${BASH_SOURCE}")";
 

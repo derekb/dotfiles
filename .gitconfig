@@ -38,3 +38,7 @@
 
     # Push current branch to origin
     publish = "!git push origin $(git current)"
+
+    [include]
+        # User information
+        path = .gituser
