@@ -41,3 +41,16 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightC
 defaults -currentHost write NSGlobalDomain com.apple.trackpad.trackpadCornerClickBehavior -int 1
 defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true
 
+###############################################################################
+# Dock, Dashboard, and hot corners                                            #
+###############################################################################
+
+# Change minimize/maximize window effect
+defaults write com.apple.dock mineffect -string "scale"
+
+# Minimize windows into their application’s icon
+defaults write com.apple.dock minimize-to-application -bool true
+
+# Top left screen corner → Mission Control
+defaults write com.apple.dock wvous-tl-corner -int 10
+defaults write com.apple.dock wvous-tl-modifier -int 0
