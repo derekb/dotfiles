@@ -13,5 +13,11 @@ alias pj="cd ~/projects"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 
+# Docker
+alias dkc='docker-compose'
+alias dkcu='docker-compose up'
+alias dkcud='docker-compose up -d'
+alias dkcd='docker-compose down'
+
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec $SHELL -l"
