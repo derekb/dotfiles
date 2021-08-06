@@ -68,3 +68,6 @@
 [include]
     # User information
     path = .gituser
+
+[init]
+	defaultBranch = main
