@@ -1,5 +1,4 @@
 [alias]
-
 	# View abbreviated SHA, description, and history graph of the latest 20 commits
 	l = log --pretty=oneline -n 20 --graph --abbrev-commit
 
@@ -39,27 +38,29 @@
     # Push current branch to origin
     publish = "!git push origin $(git current)"
 
-[color]
+	# Get the default branch -- useful for when you don't know/care if it's `master` or `main`
+	default = "!git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'"
 
+	# Creates an empty git commit. Useful to trigger side-effects.
+	empty = commit --allow-empty -m 'Empty commit.'
+
+[color]
 	# Use colors in Git commands that are capable of colored output when
 	# outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
 	ui = auto
 
 [color "branch"]
-
 	current = yellow reverse
 	local = yellow
 	remote = green
 
 [color "diff"]
-
 	meta = yellow bold
 	frag = magenta bold # line info
 	old = red # deletions
 	new = green # additions
 
 [color "status"]
-
 	added = yellow
 	changed = green
 	untracked = cyan
