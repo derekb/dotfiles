@@ -1,9 +1,12 @@
 [alias]
+
 	# View abbreviated SHA, description, and history graph of the latest 20 commits
 	l = log --pretty=oneline -n 20 --graph --abbrev-commit
 
 	# View the current working tree status using the short format
 	s = status -s
+
+	sa = submodule add
 
 	# Show the diff between the latest commit and the current state
 	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
@@ -17,8 +20,8 @@
 	# Clone a repository including all submodules
 	c = clone --recursive
 
-	# Commit all changes
-	ca = !git add -A && git commit -av
+	# Commit
+	cm = commit -m
 
 	# Switch to a branch, creating it if necessary
 	go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
@@ -36,31 +39,33 @@
     current = rev-parse --abbrev-ref HEAD
 
     # Push current branch to origin
-    publish = "!git push origin $(git current)"
+    pub = "!git push origin $(git current)"
 
-	# Get the default branch -- useful for when you don't know/care if it's `master` or `main`
 	default = "!git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'"
 
-	# Creates an empty git commit. Useful to trigger side-effects.
 	empty = commit --allow-empty -m 'Empty commit.'
 
 [color]
+
 	# Use colors in Git commands that are capable of colored output when
 	# outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
 	ui = auto
 
 [color "branch"]
+
 	current = yellow reverse
 	local = yellow
 	remote = green
 
 [color "diff"]
+
 	meta = yellow bold
 	frag = magenta bold # line info
 	old = red # deletions
 	new = green # additions
 
 [color "status"]
+
 	added = yellow
 	changed = green
 	untracked = cyan
@@ -68,6 +73,14 @@
 [include]
     # User information
     path = .gituser
-
+[core]
+	editor = vim
 [init]
 	defaultBranch = main
+[gui]
+	fontdiff = -family \"Ubuntu Mono\" -size 22 -weight normal -slant roman -underline 0 -overstrike 0
+	fontui = -family \"Ubuntu Mono\" -size 22 -weight normal -slant roman -underline 0 -overstrike 0
+[pull]
+	rebase = true
+[diff]
+	external = difft
