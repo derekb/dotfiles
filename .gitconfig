@@ -45,6 +45,29 @@
 
 	empty = commit --allow-empty -m 'Empty commit.'
 
+	pick = "!f() { \
+        if [ $# -ne 2 ]; then \
+            echo 'Usage: git pick <number_of_commits> <new_branch_name>'; \
+            return 1; \
+        fi; \
+        commits=$(git log -n $1 --format='%H' --reverse); \
+        if git checkout -b $2 $(git default); then \
+            echo \"Created new branch '$2' from default branch\"; \
+            for commit in $commits; do \
+                echo \"Cherry-picking commit $commit\"; \
+                if ! git cherry-pick $commit; then \
+                    echo 'Cherry-pick failed. You may need to resolve conflicts.'; \
+                    break; \
+                fi; \
+            done; \
+            echo \"Successfully cherry-picked $1 commits to branch '$2'\"; \
+        else \
+            echo \"Failed to create branch '$2'\"; \
+            return 1; \
+        fi; \
+    }; f"
+
+
 [color]
 
 	# Use colors in Git commands that are capable of colored output when
